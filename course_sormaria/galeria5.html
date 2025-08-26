@@ -10,8 +10,8 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const curso = urlParams.get('curso') || 'el curso';
-            document.getElementById('titulo-galeria').textContent = `Galería de ${curso}`;
-            document.title = `Listas de ${curso} - Sistema de Gestión Educativa`;
+            //document.getElementById('titulo-galeria').textContent = `Galería de ${curso}`;
+            //document.title = `Listas de ${curso} - Sistema de Gestión Educativa`;
             
             // Cargar imágenes guardadas
             loadSavedImages();
@@ -161,45 +161,33 @@
 </head>
 <body>
     <header>
-        <h1>Sistema de Gestión Educativa</h1>
-        <p>Galería de imágenes del curso</p>
+        <h1>Copypapel Papeleria</h1>
+        <p>Listas de la escuela Sor Maria</p>
     </header>
     
     <div class="container">
-        <h2 id="titulo-galeria">Galería del Curso</h2>
+        <h2 id="titulo-galeria">Cuarto</h2>
         
         <div class="gallery-container" id="image-gallery">
             <!-- Imágenes predeterminadas -->
             <div class="image-card">
-                <img src="sormaria/cuarto.png" alt="Lista de incial" class="thumbnail" onclick="openModal(this)">
+                <img src="sormaria/cuarto.png" alt="Lista de Cuarto" class="thumbnail" onclick="openModal(this)">
                 <div class="image-name">Lista de Cuarto</div>
                 <button class="delete-btn" onclick="if(confirm('¿Está seguro de que desea eliminar esta imagen?')) this.parentElement.remove(); saveImagesToLocalStorage();">X</button>
             </div>
         </div>
         
-        <!-- Formulario para agregar imágenes -->
-        <div class="add-image-form" id="addImageForm" style="display: none;">
-            <h3>Agregar Nueva Imagen</h3>
-            <form onsubmit="addNewImage(event)">
-                <div class="form-group">
-                    <label for="imageName">Nombre de la imagen:</label>
-                    <input type="text" id="imageName" required placeholder="Ej: Excursión al museo">
-                </div>
-                <div class="form-group">
-                    <label for="imageUrl">URL de la imagen:</label>
-                    <input type="url" id="imageUrl" required placeholder="https://ejemplo.com/imagen.jpg">
-                </div>
-                <button type="submit" class="nav-btn">Agregar Imagen</button>
-                <button type="button" class="nav-btn back-btn" onclick="toggleAddImageForm()">Cancelar</button>
-            </form>
-        </div>
-        
-        <button class="add-image-btn" onclick="toggleAddImageForm()">Agregar Nueva Imagen</button>
-        
         <!-- Modal para imagen completa -->
         <div id="imageModal" class="modal">
             <span class="close" onclick="closeModal()">&times;</span>
             <img class="modal-content" id="fullImage">
+        </div>
+
+        <div style="text-align: center;">
+            <h3 class="precios">Precio aprox
+                <br>
+                $45.50 a $54.60
+            </h3>
         </div>
         
         <div style="text-align: center;">

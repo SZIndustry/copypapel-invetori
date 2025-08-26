@@ -14,6 +14,18 @@ body {
     display: flex;
     flex-direction: column;
 }
+.precios {
+    display: block;
+    margin: 30px auto;
+    padding: 15px 30px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
 .container {
     max-width: 1200px;
@@ -167,15 +179,6 @@ h2 {
     cursor: pointer;
 }
 
-/* Formulario para agregar imágenes */
-.add-image-form {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    max-width: 500px;
-    margin: 20px auto;
-}
 
 .form-group {
     margin-bottom: 15px;
@@ -193,24 +196,6 @@ h2 {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1rem;
-}
-
-/* Botón de agregar imágenes */
-.add-image-btn {
-    display: block;
-    margin: 30px auto;
-    padding: 15px 30px;
-    background-color: #27ae60;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.add-image-btn:hover {
-    background-color: #219653;
 }
 
 /* Botones de navegación */
