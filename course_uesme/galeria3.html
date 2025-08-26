@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión Educativa - Galería</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Obtener el parámetro del curso desde la URL
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const curso = urlParams.get('curso') || 'el curso';
+            //document.getElementById('titulo-galeria').textContent = `Galería de ${curso}`;
+            //document.title = `Listas de ${curso} - Sistema de Gestión Educativa`;
+            
+            // Cargar imágenes guardadas
+            loadSavedImages();
+        }
+        
+        // Funcionalidad para el modal de imágenes
+        function openModal(element) {
+            const modal = document.getElementById('imageModal');
+            const fullImage = document.getElementById('fullImage');
+            fullImage.src = element.src;
+            fullImage.alt = element.alt;
+            modal.style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        
+        // Cerrar modal al hacer clic fuera de la imagen
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+        
+        // Función para mostrar/ocultar el formulario de agregar imagen
+        function toggleAddImageForm() {
+            const form = document.getElementById('addImageForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        // Función para agregar nuevas imágenes
+        function addNewImage(event) {
+            event.preventDefault();
+            
+            const imageName = document.getElementById('imageName').value;
+            const imageUrl = document.getElementById('imageUrl').value;
+            
+            if (!imageName || !imageUrl) {
+                alert('Por favor, complete todos los campos');
+                return;
+            }
+            
+            // Crear nueva imagen
+            const gallery = document.getElementById('image-gallery');
+            
+            const imageCard = document.createElement('div');
+            imageCard.className = 'image-card';
+            
+            const imageElement = document.createElement('img');
+            imageElement.src = imageUrl;
+            imageElement.alt = imageName;
+            imageElement.className = 'thumbnail';
+            imageElement.onclick = function() { openModal(this); };
+            
+            const nameElement = document.createElement('div');
+            nameElement.className = 'image-name';
+            nameElement.textContent = imageName;
+            
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerHTML = 'X';
+            deleteBtn.onclick = function() { 
+                if (confirm('¿Está seguro de que desea eliminar esta imagen?')) {
+                    imageCard.remove();
+                    saveImagesToLocalStorage();
+                }
+            };
+            
+            imageCard.appendChild(imageElement);
+            imageCard.appendChild(nameElement);
+            imageCard.appendChild(deleteBtn);
+            
+            gallery.appendChild(imageCard);
+            
+            // Guardar en localStorage
+            saveImagesToLocalStorage();
+            
+            // Resetear formulario
+            document.getElementById('addImageForm').reset();
+            document.getElementById('addImageForm').style.display = 'none';
+            
+            alert('Imagen agregada correctamente');
+        }
+        
+        // Guardar imágenes en localStorage
+        function saveImagesToLocalStorage() {
+            const images = [];
+            const imageCards = document.querySelectorAll('.image-card');
+            
+            imageCards.forEach(card => {
+                const img = card.querySelector('img');
+                const name = card.querySelector('.image-name').textContent;
+                images.push({
+                    name: name,
+                    url: img.src
+                });
+            });
+            
+            localStorage.setItem('savedImages', JSON.stringify(images));
+        }
+        
+        // Cargar imágenes desde localStorage
+        function loadSavedImages() {
+            const savedImages = JSON.parse(localStorage.getItem('savedImages')) || [];
+            const gallery = document.getElementById('image-gallery');
+            
+            // Limpiar galería excepto las imágenes predeterminadas
+            const defaultImages = gallery.querySelectorAll('.image-card');
+            if (savedImages.length > 0) {
+                defaultImages.forEach(img => img.remove());
+            }
+            
+            savedImages.forEach(imageData => {
+                const imageCard = document.createElement('div');
+                imageCard.className = 'image-card';
+                
+                const imageElement = document.createElement('img');
+                imageElement.src = imageData.url;
+                imageElement.alt = imageData.name;
+                imageElement.className = 'thumbnail';
+                imageElement.onclick = function() { openModal(this); };
+                
+                const nameElement = document.createElement('div');
+                nameElement.className = 'image-name';
+                nameElement.textContent = imageData.name;
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.innerHTML = 'X';
+                deleteBtn.onclick = function() { 
+                    if (confirm('¿Está seguro de que desea eliminar esta imagen?')) {
+                        imageCard.remove();
+                        saveImagesToLocalStorage();
+                    }
+                };
+                
+                imageCard.appendChild(imageElement);
+                imageCard.appendChild(nameElement);
+                imageCard.appendChild(deleteBtn);
+                
+                gallery.appendChild(imageCard);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Copypapel Papeleria</h1>
+        <p>Listas de la escuela Sor Maria</p>
+    </header>
+    
+    <div class="container">
+        <h2 id="titulo-galeria">Segundos</h2>
+        
+        <div class="gallery-container" id="image-gallery">
+            <!-- Imágenes predeterminadas -->
+            <div class="image-card">
+                <img src="sormaria/segundo.png" alt="Lista de incial" class="thumbnail" onclick="openModal(this)">
+                <div class="image-name">Lista de Segundo</div>
+                <button class="delete-btn" onclick="if(confirm('¿Está seguro de que desea eliminar esta imagen?')) this.parentElement.remove(); saveImagesToLocalStorage();">X</button>
+            </div>
+        </div>
+        
+        <!-- Modal para imagen completa -->
+        <div id="imageModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="fullImage">
+        </div>
+
+        <div style="text-align: center;">
+            <h3 class="precios">Precio aprox
+                <br>
+                $45.50 a $54.60
+            </h3>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="cursos.html" class="nav-btn back-btn">Volver a Cursos</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Sistema de Gestión Educativa &copy; 2023</p>
+    </footer>
+</body>
+</html>
