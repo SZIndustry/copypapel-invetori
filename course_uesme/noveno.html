@@ -10,8 +10,8 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const curso = urlParams.get('curso') || 'el curso';
-            //document.getElementById('titulo-galeria').textContent = `Galería de ${curso}`;
-            //document.title = `Listas de ${curso} - Sistema de Gestión Educativa`;
+            document.getElementById('titulo-galeria').textContent = `Galería de ${curso}`;
+            document.title = `Listas de ${curso} - Sistema de Gestión Educativa`;
             
             // Cargar imágenes guardadas
             loadSavedImages();
@@ -166,13 +166,13 @@
     </header>
     
     <div class="container">
-        <h2 id="titulo-galeria">Sexto</h2>
+        <h2 id="titulo-galeria">Noveno</h2>
         
         <div class="gallery-container" id="image-gallery">
             <!-- Imágenes predeterminadas -->
             <div class="image-card">
-                <img src="uesme/sextoegb.png" alt="Lista de Sexto" class="thumbnail" onclick="openModal(this)">
-                <div class="image-name">Lista de Sexto</div>
+                <img src="uesme/novenobgu.png" alt="Lista de Noveno" class="thumbnail" onclick="openModal(this)">
+                <div class="image-name">Lista de Noveno</div>
                 <button class="delete-btn" onclick="if(confirm('¿Está seguro de que desea eliminar esta imagen?')) this.parentElement.remove(); saveImagesToLocalStorage();">X</button>
             </div>
         </div>
@@ -186,7 +186,7 @@
         <div style="text-align: center;">
             <h3 class="precios">Precio aprox
                 <br>
-                $34.50
+                $45.50 a $54.60
             </h3>
         </div>
         
