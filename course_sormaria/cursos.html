@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión Educativa - Cursos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Obtener el parámetro de la escuela desde la URL
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const escuela = urlParams.get('escuela') || 'la escuela';
+            document.getElementById('titulo-cursos').textContent = `Cursos de ${escuela}`;
+            document.title = `Cursos de ${escuela} - Sistema de Gestión Educativa`;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Sistema de Gestión Educativa</h1>
+        <p>Seleccione un curso para ver la galería</p>
+    </header>
+    
+    <div class="container">
+        <h2 id="titulo-cursos">Cursos de la Escuela</h2>
+        <div class="modules-grid">
+            <a href="galeria.html" class="module-btn">Inicial</a>
+            <a href="galeria2.html" class="module-btn">Primero</a>
+            <a href="galeria3.html" class="module-btn">Segundo</a>
+            <a href="galeria4.html" class="module-btn">Tercero</a>
+            <a href="galeria5.html" class="module-btn">Cuarto</a>
+            <a href="galeria6.html" class="module-btn">Quinto</a>
+            <a href="galeria7.html" class="module-btn">Sexto</a>
+            <a href="galeria8.html" class="module-btn">Septimo</a>
+            
+        </div>
+        <div style="text-align: center;">
+            <a href="index.html" class="nav-btn back-btn">Volver a Escuelas</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Sistema de Gestión Educativa &copy; 2023</p>
+    </footer>
+</body>
+</html>
