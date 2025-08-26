@@ -10,8 +10,8 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const curso = urlParams.get('curso') || 'el curso';
-            document.getElementById('titulo-galeria').textContent = `Galería de ${curso}`;
-            document.title = `Listas de ${curso} - Sistema de Gestión Educativa`;
+            //document.getElementById('titulo-galeria').textContent = `Galería de ${curso}`;
+            //document.title = `Listas de ${curso} - Sistema de Gestión Educativa`;
             
             // Cargar imágenes guardadas
             loadSavedImages();
