@@ -10,8 +10,8 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const curso = urlParams.get('curso') || 'el curso';
-            //document.getElementById('titulo-galeria').textContent = `Galería de ${curso}`;
-            //document.title = `Listas de ${curso} - Sistema de Gestión Educativa`;
+            document.getElementById('titulo-galeria').textContent = `Galería de ${curso}`;
+            document.title = `Listas de ${curso} - Sistema de Gestión Educativa`;
             
             // Cargar imágenes guardadas
             loadSavedImages();
@@ -166,13 +166,13 @@
     </header>
     
     <div class="container">
-        <h2 id="titulo-galeria">Primeros</h2>
+        <h2 id="titulo-galeria">Decimo</h2>
         
         <div class="gallery-container" id="image-gallery">
             <!-- Imágenes predeterminadas -->
             <div class="image-card">
-                <img src="federico/primeroegb.png" alt="Lista de Primero" class="thumbnail" onclick="openModal(this)">
-                <div class="image-name">Lista de Primero</div>
+                <img src="federico/basicasuperiror.png" alt="Lista de Decimo" class="thumbnail" onclick="openModal(this)">
+                <div class="image-name">Lista de Decimo</div>
                 <button class="delete-btn" onclick="if(confirm('¿Está seguro de que desea eliminar esta imagen?')) this.parentElement.remove(); saveImagesToLocalStorage();">X</button>
             </div>
         </div>
@@ -186,7 +186,7 @@
         <div style="text-align: center;">
             <h3 class="precios">Precio aprox
                 <br>
-                $
+                $38.90
             </h3>
         </div>
         

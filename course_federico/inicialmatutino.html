@@ -10,8 +10,8 @@
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const curso = urlParams.get('curso') || 'el curso';
-            //document.getElementById('titulo-galeria').textContent = `Galería de ${curso}`;
-            //document.title = `Listas de ${curso} - Sistema de Gestión Educativa`;
+            document.getElementById('titulo-galeria').textContent = `Galería de ${curso}`;
+            document.title = `Listas de ${curso} - Sistema de Gestión Educativa`;
             
             // Cargar imágenes guardadas
             loadSavedImages();
@@ -166,13 +166,13 @@
     </header>
     
     <div class="container">
-        <h2 id="titulo-galeria">Primeros</h2>
+        <h2 id="titulo-galeria">Iniciales Matutino 2</h2>
         
         <div class="gallery-container" id="image-gallery">
             <!-- Imágenes predeterminadas -->
             <div class="image-card">
-                <img src="federico/primeroegb.png" alt="Lista de Primero" class="thumbnail" onclick="openModal(this)">
-                <div class="image-name">Lista de Primero</div>
+                <img src="federico/inicial2matutino.png" alt="Lista de Inicial Matutino" class="thumbnail" onclick="openModal(this)">
+                <div class="image-name">Lista de Inicial Matutino</div>
                 <button class="delete-btn" onclick="if(confirm('¿Está seguro de que desea eliminar esta imagen?')) this.parentElement.remove(); saveImagesToLocalStorage();">X</button>
             </div>
         </div>
